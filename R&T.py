@@ -1,13 +1,14 @@
-import re
 import discord
 from discord import app_commands
 import datetime
 import traceback
-
+from dotenv import load_dotenv
+import os
 # The guild in which this slash command will be registered.
 # It is recommended to have a test guild to separate from your "production" bot
 
-
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 class MyClient(discord.Client):
     def __init__(self) -> None:
@@ -145,4 +146,4 @@ async def createpa(interaction: discord.Interaction):
     await interaction.response.send_modal(CreatePA())
 
 
-client.run('MTEyOTk1ODYxMTI0MjcxNzI2NA.GmWeGR.MfvRiJqE0GV9uj7gC9yQsIuClNBSWpPgsWJNYo')
+client.run(TOKEN)
