@@ -2,13 +2,13 @@ import discord
 from discord import app_commands
 import datetime
 import traceback
-from dotenv import load_dotenv
-import os
+import json
 # The guild in which this slash command will be registered.
 # It is recommended to have a test guild to separate from your "production" bot
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+with open('config.json', 'r') as f:
+    config = json.load(f)
+    TOKEN = config['TOKEN']
 
 class MyClient(discord.Client):
     def __init__(self) -> None:
